@@ -75,7 +75,7 @@ const HeaderDesktop = () => {
         )}
         {isLogged && (
           <figure
-            class="header-desktop__shopping-cart-container"
+            className="header-desktop__shopping-cart-container"
             routerLink="/cart"
           >
             <img
