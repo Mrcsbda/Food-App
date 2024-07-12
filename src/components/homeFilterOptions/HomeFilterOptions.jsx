@@ -48,6 +48,14 @@ const HomeFilterOptions = () => {
           slidesPerView: 4,
           spaceBetween: 10,
         },
+        1100: {
+          slidesPerView: 5,
+          spaceBetween: 10,
+        },
+        1300: {
+          slidesPerView: 6,
+          spaceBetween: 20,
+        },
       }}
       className="mySwiper"
     >

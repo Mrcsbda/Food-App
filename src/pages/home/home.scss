@@ -9,7 +9,6 @@ body {
 .swiper {
     width: 100%;
     height: 100%;
-
 }
 
 .swiper-slide {
@@ -105,39 +104,10 @@ body {
     }
 }
 
-@media screen and (min-width: 880px) {
-    .home {
-        &__carrousel {
-            justify-content: center;
-            gap: 0.8rem;
-        }
-    }
-}
-
-@media screen and (min-width: 1016px) {
-    .home {
-        &__image {
-            height: 100px;
-        }
-
-        &__filter-options {
-            justify-content: center;
-            gap: 0.9rem;
-        }
-
-        &__filter-option {
-            min-width: 150px;
-            &:hover {
-                background-color: $main-color;
-            }
-        }
-    }
-}
-
 @media screen and (min-width: 1300px) {
     .home {
-        &__image {
-            height: 150px;
+        &__carrousel-image {
+            height: 110px;
         }
 
         &__restaurants {
@@ -150,6 +120,10 @@ body {
     .home {
         &__title {
             font-size: 18px;
+        }
+
+        &__carrousel-image {
+            height: 130px;
         }
 
         &__filter-option {

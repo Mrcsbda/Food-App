@@ -35,6 +35,10 @@ const HomeCarrousel = () => {
           slidesPerView: 4,
           spaceBetween: 10,
         },
+        1300: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
       }}
       className="mySwiper"
     >
