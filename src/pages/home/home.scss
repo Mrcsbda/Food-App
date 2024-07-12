@@ -1,0 +1,156 @@
+@import "../../assets/styles/variables.scss";
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.home {
+    padding: 0rem 1.5rem 4.5rem 1.5rem;
+
+    &__carrousel {
+        margin-bottom: 0.8rem;
+    }
+
+    &__carrousel-image {
+        height: 80px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+        width: 100%;
+    }
+
+    &__title {
+        font-weight: 300;
+        font-size: 15px;
+        color: $dark-color;
+        margin-bottom: 1rem;
+    }
+
+    &__filter-options {
+        gap: 0.5rem;
+        width: 100%;
+        display: flex;
+        overflow: auto;
+        border-radius: 5px;
+        scrollbar-width: 0;
+        margin-bottom: 1.5rem;
+        scrollbar-color: transparent transparent;
+    }
+
+    &__filter-option {
+        gap: 0.3rem;
+        display: flex;
+        cursor: pointer;
+        border-radius: 5px;
+        align-items: center;
+        padding: 0.6rem 0.7rem;
+        justify-content: center;
+        background-color: $light-gray;
+        height: 100%;
+        width: 100%;
+
+        &--text {
+            font-size: 13px;
+            color: $font-buttons-category-color;
+            text-align: center;
+        }
+
+        &--icon {
+            width: 1rem;
+        }
+
+        &--selected {
+            background-color: $main-color;
+        }
+    }
+
+    &__restaurants {
+        gap: 1.3rem;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .home {
+        padding-bottom: 2-5rem;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .home {
+        &__restaurants {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .home {
+        &__carrousel-image {
+            height: 110px;
+        }
+
+        &__restaurants {
+            grid-template-columns: repeat(3, 380px);
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .home {
+        &__title {
+            font-size: 18px;
+        }
+
+        &__carrousel-image {
+            height: 130px;
+        }
+
+        &__filter-option {
+
+            &--text {
+                font-size: 16px;
+            }
+
+            &--icon {
+                width: 1.2rem;
+            }
+        }
+
+        &__restaurants {
+            grid-template-columns: repeat(3, 400px);
+            justify-content: center;
+        }
+    }
+
+}
+
+@media screen and (min-width: 1700px) {
+    .home {
+        &__restaurants {
+            grid-template-columns: repeat(4, 400px);
+            justify-content: center;
+        }
+    }
+
+}

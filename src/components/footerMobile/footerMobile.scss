@@ -1,0 +1,40 @@
+@import "../../assets/styles/variables.scss";
+
+.footer-mobile {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: white;
+
+    &__icon {
+        width: 1.8rem;
+        filter: invert(26%) sepia(0%) saturate(0%) hue-rotate(120deg) brightness(99%) contrast(100%);
+    }
+
+    &__icon-container {
+        display: flex;
+        position: relative;
+
+        &--active {
+            .footer-mobile__icon {
+                filter: invert(95%) sepia(67%) saturate(3286%) hue-rotate(325deg) brightness(102%) contrast(108%);
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 115%;
+                left: 45%;
+                width: 0.25rem;
+                height: 0.25rem;
+                border-radius: 50%;
+                z-index: 900;
+                background-color: $main-color;
+            }
+        }
+    }
+}

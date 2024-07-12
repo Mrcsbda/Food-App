@@ -1,0 +1,78 @@
+@import "../../assets/styles/variables.scss";
+
+.header {
+    gap: 0.3rem;
+    display: flex;
+    align-items: center;
+
+
+    &__icon-container {
+        display: flex;
+    }
+
+    &__icon {
+        width: 2rem;
+        height: 2rem;
+        filter: invert(96%) sepia(7%) saturate(4366%) hue-rotate(340deg) brightness(102%) contrast(105%);
+    }
+
+    &__location {
+        gap: 0.1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__location-title {
+        font-size: 12px;
+        font-weight: 400;
+        color: $main-color;
+    }
+
+    &__location-info {
+        gap: 0.1rem;
+        display: flex;
+        cursor: pointer;
+    }
+
+    &__location-address {
+        font-size: 14px;
+        color: $dark-color;
+    }
+
+    &__location-arrow {
+        width: 1rem;
+        filter: invert(17%) sepia(1%) saturate(4662%) hue-rotate(316deg) brightness(99%) contrast(73%);
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .header {
+        gap: 0.5rem;
+
+        &__icon {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        &__location {
+            gap: 0.2rem;
+        }
+
+        &__location-title {
+            font-size: 14px;
+        }
+
+        &__location-info {
+            gap: 0.2rem;
+        }
+
+        &__location-address {
+            font-size: 16px;
+        }
+
+        &__location-arrow {
+            width: 1.15rem;
+        }
+    }
+
+}
