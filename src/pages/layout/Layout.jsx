@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import HeaderMobile from "../../components/headerMobile/HeaderMobile";
 import HeaderDesktop from "../../components/headerDesktop/HeaderDesktop";
+import FooterMobile from "../../components/footerMobile/FooterMobile";
 
 const Layout = () => {
   const [desktopMenu, setDesktopMenu] = useState(false);
@@ -30,7 +31,7 @@ const Layout = () => {
       {desktopMenu && <HeaderDesktop />}
       {!desktopMenu && <HeaderMobile />}
       <Outlet />
-      {/* {!desktopMenu && <Footer />} */}
+      {!desktopMenu && <FooterMobile />}
     </main>
   );
 };
