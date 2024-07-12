@@ -1,0 +1,114 @@
+@import "../../assets/styles/variables.scss";
+
+.restaurant-card {
+    width: 100%;
+    gap: 0.8rem;
+    display: flex;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid rgb(240, 240, 240);
+
+    &:hover &__image {
+        opacity: 0.9;
+        transform: scale(1.1);
+        transition: .3s all ease;
+    }
+
+    &__image-container {
+        height: 130px;
+        display: flex;
+        min-width: 130px;
+        max-width: 130px;
+        overflow: hidden;
+        border-radius: 10px;
+        clip-path: polygon(0 0, 100% 0, 100% 17%, 54% 100%, 0 100%, 0% 50%);
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__info {
+        gap: 0.1rem;
+        width: 100%;
+        display: flex;
+        padding: 0.5rem;
+        flex-direction: column;
+    }
+
+    &__name {
+        font-size: 15px;
+        font-weight: 400;
+        margin-top: 0.8rem;
+        color: $dark-color;
+    }
+
+    &__rating-container {
+        gap: 1px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.7rem;
+    }
+
+    &__rating {
+        width: 12px;
+
+        &--full {
+            filter: invert(85%) sepia(84%) saturate(895%) hue-rotate(327deg) brightness(104%) contrast(102%);
+        }
+
+        &--empty {
+            filter: invert(96%) sepia(0%) saturate(1257%) hue-rotate(167deg) brightness(90%) contrast(106%);
+        }
+    }
+
+    &__work-time {
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 2px;
+        color: $dark-color;
+    }
+
+    &__delivery-price {
+        font-size: 13px;
+        font-weight: 300;
+        color: $gray-color;
+
+        span {
+            color: $dark-color;
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .restaurant-card {
+
+        &__image-container {
+            min-width: 145px;
+            max-width: 145px;
+            min-height: 155px;
+        }
+
+        &__name {
+            font-size: 17px;
+            margin-top: 0.9rem;
+            margin-bottom: 2px;
+        }
+
+        &__rating {
+            width: 14px;
+        }
+
+        &__work-time {
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        &__delivery-price {
+            font-size: 15px;
+        }
+    }
+}

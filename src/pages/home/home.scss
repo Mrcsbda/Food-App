@@ -89,23 +89,6 @@ body {
     }
 }
 
-@media screen and (min-width: 500px) {
-    .home {
-
-        &__filter-option {
-            min-width: 23.5%;
-        }
-    }
-}
-
-@media screen and (min-width: 580px) {
-    .home {
-        &__filter-option {
-            min-width: 18.8%;
-        }
-    }
-}
-
 @media screen and (min-width: 650px) {
     .home {
         padding-bottom: 2-5rem;
@@ -114,10 +97,6 @@ body {
 
 @media screen and (min-width: 720px) {
     .home {
-        &__filter-option {
-            min-width: 15.62%;
-        }
-
         &__restaurants {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -157,24 +136,12 @@ body {
 
 @media screen and (min-width: 1300px) {
     .home {
-        &__carrousel {
-            gap: 1rem;
-        }
-
         &__image {
             height: 150px;
         }
 
-        &__filter-option {
-            min-width: 170px;
-        }
-
         &__restaurants {
             grid-template-columns: repeat(3, 380px);
-        }
-
-        &__filter-option {
-            min-width: 160px;
         }
     }
 }
@@ -186,7 +153,6 @@ body {
         }
 
         &__filter-option {
-            gap: 0.5rem;
 
             &--text {
                 font-size: 16px;

@@ -32,10 +32,6 @@ const HomeFilterOptions = () => {
     return title[0].toUpperCase() + title.slice(1).toLowerCase();
   };
 
-  const selectOption = (option) => {
-    setSelectedOption(option);
-  };
-
   return (
     <Swiper
       slidesPerView={2}
@@ -57,7 +53,7 @@ const HomeFilterOptions = () => {
     >
       {filterOptions.map((option, index) => {
         return (
-          <SwiperSlide key={index} onClick={() => selectOption(option.value)}>
+          <SwiperSlide key={index} onClick={() => setSelectedOption(option.value)}>
             <section
               className={`home__filter-option ${
                 option.value == selectedOption
@@ -73,7 +69,6 @@ const HomeFilterOptions = () => {
                 />
               )}
               <p className="home__filter-option--text">
-                {" "}
                 {titleCase(option.value)}
               </p>
             </section>
