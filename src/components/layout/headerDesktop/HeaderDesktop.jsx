@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import AddressHeader from "../addressHeader/AddressHeader";
 import "./headerDesktop.scss";
+import AddressHeader from "../addressHeader/AddressHeader";
+import { useNavigate } from "react-router-dom";
 
 const HeaderDesktop = () => {
+  const navigate = useNavigate();
   const headerOptions = [
     {
       title: "Home",
@@ -32,6 +34,9 @@ const HeaderDesktop = () => {
       path: "profile",
     },
   ];
+  const handleRoutes = (path) => {
+    navigate(`/${path}`);
+  };
   const { isLogged } = useSelector((state) => state.user);
   return (
     <header className="header-desktop">
@@ -47,41 +52,50 @@ const HeaderDesktop = () => {
       </section>
       <section className="header-desktop__nav-container">
         <nav className="header-desktop__nav">
-          {!isLogged && (
+          {!isLogged ? (
             <ul className="header-desktop__nav-options">
-              {headerOptions.map((option) => (
-                <li key={option.title} className="header-desktop__nav-option">
-                  {option.title}
-                </li>
-              ))}
+              {headerOptions.map((option, index) => {
+                return (
+                  <li
+                    key={index}
+                    className="header-desktop__nav-option"
+                    onClick={() => handleRoutes(option.path)}
+                  >
+                    {option.title}
+                  </li>
+                );
+              })}
             </ul>
-          )}
-          {isLogged && (
+          ) : (
             <ul className="header-desktop__nav-options">
-              {headerOptionsUserLogged.map((option) => (
-                <li key={option.title} className="header-desktop__nav-option">
-                  {option.title}
-                </li>
-              ))}
+              {headerOptionsUserLogged.map((option, index) => {
+                return (
+                  <li
+                    key={index}
+                    className="header-desktop__nav-option"
+                    onClick={() => handleRoutes(option.path)}
+                  >
+                    {option.title}
+                  </li>
+                );
+              })}
             </ul>
           )}
         </nav>
         <hr />
-        {!isLogged && (
+        {!isLogged ? (
           <article className="header-desktop__login-options">
             <button className="header-desktop__login-button">Login</button>
             <button className="header-desktop__signup-button">Sign Up</button>
           </article>
-        )}
-        {isLogged && (
+        ) : (
           <figure
             className="header-desktop__shopping-cart-container"
-            routerLink="/cart"
           >
             <img
               src="./images/cart.svg"
               alt="shopping cart icon"
-              class="header-desktop__shopping-cart"
+              className="header-desktop__shopping-cart"
             />
           </figure>
         )}

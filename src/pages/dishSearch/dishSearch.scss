@@ -1,0 +1,87 @@
+@import "../../assets/styles/variables.scss";
+
+.dish-search {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+
+    &__search-container {
+        gap: 0.7rem;
+        display: flex;
+        width: 100%;
+        max-width: 550px;
+        align-self: center;
+        align-items: center;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        padding: 0.8rem 1.1rem;
+        background-color: $light-gray;
+    }
+
+    &__search-icon,
+    &__delete {
+        width: 1.2rem;
+        cursor: pointer;
+        filter: invert(78%) sepia(3%) saturate(20%) hue-rotate(341deg) brightness(85%) contrast(94%);
+    }
+
+    &__search {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        color: $dark-color;
+        background-color: $light-gray;
+
+        &::placeholder {
+            color: $gray-color;
+        }
+    }
+
+    &__results-container {
+        gap: 1.5rem;
+        display: grid;
+        margin-bottom: 3.5rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .dish-search {
+        padding: 0rem 1.3rem 1.5rem 1.3rem;
+
+        &__results-container {
+            justify-content: center;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .dish-search {
+        &__search-container {
+            max-width: 750px;
+            margin-bottom: 2rem;
+            padding: 0.9rem 1.2rem;
+        }
+
+        &__results-container {
+            grid-template-columns: repeat(4, 230px);
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .dish-search {
+
+        &__search-icon,
+        &__delete {
+            width: 1.3rem;
+        }
+
+        &__search {
+            font-size: 17px;
+        }
+    }
+
+}
