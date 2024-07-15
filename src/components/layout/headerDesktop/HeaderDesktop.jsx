@@ -5,6 +5,7 @@ import AddressHeader from "../addressHeader/AddressHeader";
 import { useNavigate } from "react-router-dom";
 
 const HeaderDesktop = () => {
+  const key = 1;
   const navigate = useNavigate();
   const headerOptions = [
     {
@@ -31,7 +32,7 @@ const HeaderDesktop = () => {
     },
     {
       title: "Profile",
-      path: "profile",
+      path: `profile/${key}`,
     },
   ];
   const handleRoutes = (path) => {
@@ -43,7 +44,7 @@ const HeaderDesktop = () => {
       <section className="header-desktop__logo-and-address-container">
         <figure className="header-desktop__logo-container">
           <img
-            src="./images/logo.svg"
+            src="../images/logo.svg"
             alt="logo image"
             className="header-desktop__logo"
           />
@@ -93,7 +94,7 @@ const HeaderDesktop = () => {
             className="header-desktop__shopping-cart-container"
           >
             <img
-              src="./images/cart.svg"
+              src="../images/cart.svg"
               alt="shopping cart icon"
               className="header-desktop__shopping-cart"
             />

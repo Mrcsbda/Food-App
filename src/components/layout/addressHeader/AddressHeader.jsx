@@ -6,7 +6,7 @@ const AddressHeader = () => {
       <figure className="header__icon-container">
         <img
           className="header__icon"
-          src="./images/location.svg"
+          src="../images/location.svg"
           alt="location icon"
         />
       </figure>
@@ -16,7 +16,7 @@ const AddressHeader = () => {
           <p className="header__location-address">882 Well St, New-York</p>
           <img
             className="header__location-arrow"
-            src="./images/arrow-down.svg"
+            src="../images/arrow-down.svg"
             alt="arrow icon"
           />
         </div>

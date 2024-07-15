@@ -9,23 +9,23 @@ const HomeFilterOptions = () => {
     },
     {
       value: "FAST FOOD",
-      path: "./images/fast-food.png",
+      path: "../images/fast-food.png",
     },
     {
       value: "HEALTHY",
-      path: "./images/healthy.png",
+      path: "../images/healthy.png",
     },
     {
       value: "BURGUER",
-      path: "./images/burguer.png",
+      path: "../images/burguer.png",
     },
     {
       value: "PIZZA",
-      path: "./images/pizza.png",
+      path: "../images/pizza.png",
     },
     {
       value: "CHICKEN",
-      path: "./images/chicken.png",
+      path: "../images/chicken.png",
     },
   ];
 

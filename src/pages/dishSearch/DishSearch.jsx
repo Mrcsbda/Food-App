@@ -82,7 +82,7 @@ const DishSearch = () => {
       <section className="dish-search__search-container">
         <img
           className="dish-search__search-icon"
-          src="./images/search.svg"
+          src="../images/search.svg"
           alt="search icon"
         />
         <input
@@ -92,7 +92,7 @@ const DishSearch = () => {
         />
         <img
           className="dish-search__delete"
-          src="./images/delete.svg"
+          src="../images/delete.svg"
           alt="delete icon"
         />
       </section>

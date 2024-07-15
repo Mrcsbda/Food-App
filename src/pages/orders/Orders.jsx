@@ -95,7 +95,7 @@ const Orders = () => {
                 </p>
                 <img
                   className="orders__arrow-icon"
-                  src="./images/arrow-next.svg"
+                  src="../images/arrow-next.svg"
                   alt="arrow icon"
                 />
               </div>
