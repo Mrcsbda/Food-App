@@ -1,0 +1,162 @@
+@import "../../assets/styles/variables.scss";
+
+.orders {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    flex-direction: column;
+
+    &__title {
+        font-size: 18px;
+        font-weight: 300;
+        color: $dark-color;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    &__orders-container {
+        gap: 0.5rem;
+        width: 100%;
+        display: flex;
+        margin-bottom: 3rem;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__order {
+        gap: 0.5rem;
+        width: 100%;
+        display: flex;
+        cursor: pointer;
+        padding: 0.3rem;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: space-between;
+
+        &-info {
+            gap: 0.8em;
+            display: flex;
+            align-items: center;
+        }
+
+        &-image-container {
+            width: 38vw;
+            height: 38vw;
+            display: flex;
+            max-width: 75px;
+            max-height: 75px;
+            overflow: hidden;
+            align-items: center;
+        }
+
+        &-image {
+            width: 100%;
+        }
+
+        &-info-container {
+            gap: 0.2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-total {
+            font-size: 15px;
+            font-weight: 300;
+            color: $gray-color;
+        }
+
+        &-status-container {
+            gap: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        &-status {
+            font-size: 15px;
+            font-weight: 300;
+
+            &--delivered {
+                color: $green-color;
+            }
+
+            &--cancelled {
+                color: $red-color;
+            }
+
+            &--pending {
+                color: $gray-color;
+            }
+        }
+    }
+
+    &__restaurant-name {
+        font-size: 16px;
+        font-weight: 300;
+        color: $dark-color;
+    }
+
+    &__arrow-icon {
+        width: 0.8rem;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .orders {
+        padding: 0 1rem 0.5rem 1rem;
+
+        &__orders-container {
+            max-width: 630px;
+            margin-bottom: 1rem;
+        }
+
+        &__order {
+            &-image-container {
+                max-width: 80px;
+                max-height: 80px;
+            }
+
+            &-info-container {
+                gap: 0.4rem;
+            }
+
+            &-status {
+                font-size: 16px;
+            }
+        }
+
+        &__restaurant-name {
+            font-size: 17px;
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .orders {
+        &__title {
+            font-size: 19px;
+        }
+
+        &__orders-container {
+            max-width: 750px;
+        }
+
+        &__order {
+            &-image-container {
+                max-width: 90px;
+                max-height: 90px;
+            }
+
+            &-total {
+                font-size: 16px;
+            }
+
+            &-status {
+                font-size: 16px;
+            }
+        }
+
+        &__restaurant-name {
+            font-size: 18px;
+        }
+    }
+}

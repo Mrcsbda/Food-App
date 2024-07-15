@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import titleCase from "../../../services/titleCase";
 const HomeFilterOptions = () => {
   const [selectedOption, setSelectedOption] = useState("ALL");
   const filterOptions = [
@@ -8,29 +9,25 @@ const HomeFilterOptions = () => {
     },
     {
       value: "FAST FOOD",
-      path: "./images/fast-food.png",
+      path: "../images/fast-food.png",
     },
     {
       value: "HEALTHY",
-      path: "./images/healthy.png",
+      path: "../images/healthy.png",
     },
     {
       value: "BURGUER",
-      path: "./images/burguer.png",
+      path: "../images/burguer.png",
     },
     {
       value: "PIZZA",
-      path: "./images/pizza.png",
+      path: "../images/pizza.png",
     },
     {
       value: "CHICKEN",
-      path: "./images/chicken.png",
+      path: "../images/chicken.png",
     },
   ];
-
-  const titleCase = (title) => {
-    return title[0].toUpperCase() + title.slice(1).toLowerCase();
-  };
 
   return (
     <Swiper

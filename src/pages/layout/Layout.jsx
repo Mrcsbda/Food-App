@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import HeaderMobile from "../../components/headerMobile/HeaderMobile";
-import HeaderDesktop from "../../components/headerDesktop/HeaderDesktop";
-import FooterMobile from "../../components/footerMobile/FooterMobile";
+import HeaderDesktop from "../../components/layout/headerDesktop/HeaderDesktop";
+import HeaderMobile from "../../components/layout/headerMobile/HeaderMobile";
+import FooterMobile from "../../components/layout/footerMobile/FooterMobile";
 
 const Layout = () => {
   const [desktopMenu, setDesktopMenu] = useState(false);

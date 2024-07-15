@@ -4,19 +4,19 @@ const HomeCarrousel = () => {
   const carrouselImages = [
     {
       name: "Slide 1",
-      path: "./images/slide-1.jpg",
+      path: "../images/slide-1.jpg",
     },
     {
       name: "Slide 2",
-      path: "./images/slide-2.jpg",
+      path: "../images/slide-2.jpg",
     },
     {
       name: "Slide 3",
-      path: "./images/slide-3.jpg",
+      path: "../images/slide-3.jpg",
     },
     {
       name: "Slide 4",
-      path: "./images/slide-4.jpg",
+      path: "../images/slide-4.jpg",
     },
   ];
   return <section className="home__carrousel">

@@ -39,7 +39,7 @@ const RestaurantCard = ({ restaurant }) => {
                     : "restaurant-card__rating--empty"
                 }`}
                 key={i}
-                src="./images/star-full.svg"
+                src="../images/star-full.svg"
                 alt="star icon"
               />
             ))}

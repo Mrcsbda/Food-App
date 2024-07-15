@@ -1,9 +1,9 @@
 import React from "react";
 import "swiper/css";
 import "./home.scss";
-import HomeCarrousel from "../../components/homeCarrousel/HomeCarrousel";
-import HomeFilterOptions from "../../components/homeFilterOptions/HomeFilterOptions";
-import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
+import RestaurantCard from "../../components/home/restaurantCard/RestaurantCard";
+import HomeFilterOptions from "../../components/home/homeFilterOptions/HomeFilterOptions";
+import HomeCarrousel from "../../components/home/homeCarrousel/HomeCarrousel";
 const Home = () => {
   const restaurants = [
     {

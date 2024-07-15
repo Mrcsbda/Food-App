@@ -1,0 +1,100 @@
+@import "../../../assets/styles/variables.scss";
+
+.search-result-info {
+    gap: 1rem;
+    display: flex;
+    cursor: pointer;
+
+    &:hover &__image {
+        transform: scale(1.05);
+        transition: .4s all ease;
+    }
+
+    &__image-container {
+        width: 17vw;
+        height: 17vw;
+        display: flex;
+        max-width: 80px;
+        max-height: 80px;
+        overflow: hidden;
+        border-radius: 10px;
+
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__info {
+        gap: 0.3rem;
+        display: flex;
+        padding: 0.3rem 0;
+        flex-direction: column;
+    }
+
+    &__name {
+        font-size: 15px;
+        font-weight: 400;
+        overflow: hidden;
+        color: $dark-color;
+    }
+
+    &__price {
+        font-size: 12px;
+        font-weight: 300;
+        color: $font-buttons-category-color;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .search-result-info {
+        &__image-container {
+            max-width: 90px;
+            max-height: 90px;
+        }
+
+        &__name {
+            font-size: 16px;
+        }
+
+        &__price {
+            font-size: 13px;
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .search-result-info {
+        &__image-container {
+            max-width: 95px;
+            max-height: 95px;
+        }
+
+        &__name {
+            font-size: 17
+        }
+
+        &__price {
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .search-result-info {
+        &__image-container {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        &__name {
+            font-size: 18
+        }
+
+        &__price {
+            font-size: 15px;
+        }
+    }
+}

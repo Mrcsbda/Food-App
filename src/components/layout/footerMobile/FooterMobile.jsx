@@ -4,22 +4,22 @@ const FooterMobile = () => {
   const footerIcons = [
     {
       name: "Home",
-      icon: "./images/home.svg",
+      icon: "../images/home.svg",
       path: "/",
     },
     {
       name: "Search",
-      icon: "./images/search.svg",
+      icon: "../images/search.svg",
       path: "/search",
     },
     {
       name: "Orders",
-      icon: "./images/orders.svg",
+      icon: "../images/orders.svg",
       path: "/orders",
     },
     {
       name: "Profile",
-      icon: "./images/profile.svg",
+      icon: "../images/profile.svg",
       path: "/profile",
     },
   ];
