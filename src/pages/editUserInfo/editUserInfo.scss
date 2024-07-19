@@ -1,0 +1,172 @@
+@import "../../assets/styles/variables.scss";
+
+.edit-user-profile {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    position: relative;
+
+    &__arrow-prev {
+        width: 1.4rem;
+        cursor: pointer;
+        position: absolute;
+        top: 1.45rem;
+        left: 1rem;
+    }
+
+    &__title {
+        font-size: 18px;
+        font-weight: 300;
+        color: $dark-color;
+        text-align: center;
+    }
+
+    &__profile-picture-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    &__profile-picture {
+        width: 7rem;
+        height: 7rem;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    &__edit-picture-icon {
+        width: 1.4rem;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0rem;
+        right: 1rem;
+    }
+
+    &__form-update-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        input[type=file] {
+            font-size: 15px;
+            color: $dark-color;
+        }
+
+        input[type=file]::file-selector-button {
+            color: $dark-color;
+            padding: 7px 20px;
+            background: $main-color;
+            border-radius: 10px;
+            border: none;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    }
+
+    &__update-image-btn {
+        color: $dark-color;
+        padding: 7px 20px;
+        background: $main-color;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    &__form-update-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    &__input-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        width: 90%;
+        background-color: $light-gray;
+        padding: 0.8rem 1rem;
+        border-radius: 7px;
+    }
+
+    &__input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        font-weight: 300;
+        color: $dark-color;
+        background-color: transparent;
+    }
+
+    &__edit-icon {
+        cursor: pointer;
+    }
+
+    &__btn-save {
+        color: $dark-color;
+        padding: 11px 20px;
+        background: $main-color;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 400;
+        width: 90%;
+        margin-top: 1rem;
+        font-weight: 400;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .edit-user-profile {
+        padding: 0;
+
+        &__arrow-prev {
+            display: none;
+        }
+
+        &__form-update-info {
+            width: 450px;
+        }
+    }
+}
+
+@media  screen and (min-width: 1500px) {
+    .edit-user-profile {
+        &__title {
+            font-size: 20px;
+        }
+
+        &__form-update-image {
+            input[type=file] {
+                font-size: 16px;
+            }
+        }
+
+        &__form-update-info {
+            width: 500px;
+        }
+
+        &__input {
+            font-size: 17px;
+        }
+
+        &__edit-icon {
+            min-width: 18px;
+        }
+
+        &__btn-save {
+            font-size: 17px;
+        }
+    }
+
+}
