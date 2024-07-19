@@ -1,0 +1,108 @@
+@import "../../assets/styles/variables.scss";
+
+.payment-methods {
+    display: flex;
+    padding: 1.5rem 1.2rem;
+    flex-direction: column;
+    position: relative;
+
+    &__arrow-prev {
+        width: 1.4rem;
+        cursor: pointer;
+        position: absolute;
+        top: 1.45rem;
+        left: 1rem;
+    }
+
+    &__title {
+        font-size: 18px;
+        font-weight: 300;
+        color: $dark-color;
+        text-align: center;
+        margin-bottom: 1.3rem;
+    }
+
+    &__cards-container {
+        width: 100%;
+        gap: 0.7rem;
+        display: flex;
+        overflow: auto;
+        flex-direction: column;
+        height: calc(100vh - 195px);
+    }
+
+    &__card {
+        display: flex;
+        border-radius: 10px;
+        padding: 0.4rem 1rem;
+        border: 1px solid $light-gray;
+        justify-content: space-between;
+
+        &:hover {
+            cursor: pointer;
+            border-color: $main-color;
+        }
+
+        &-image-container {
+            gap: 0.7rem;
+            display: flex;
+            align-items: center;
+        }
+
+        &-image {
+            width: 35px;
+            height: 35px;
+        }
+
+        &-number {
+            font-size: 15px;
+            font-weight: 300;
+            color: $dark-color;
+        }
+    }
+
+    &__delete-icon {
+        width: 1.3rem;
+        filter: invert(76%) sepia(0%) saturate(1%) hue-rotate(229deg) brightness(90%) contrast(86%);
+    }
+
+    &__add-card-button {
+        left: 0;
+        width: 100%;
+        border: none;
+        bottom: 65px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 300;
+        position: absolute;
+        color: $dark-color;
+        padding: 2rem 0 1rem 0;
+        background-color: white;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .payment-methods {
+        padding: 0rem 1.2rem;
+
+        &__arrow-prev {
+            display: none;
+        }
+
+        &__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        &__cards-container {
+            max-width: 620px;
+            height: calc(100vh - 200px);
+        }
+
+        &__add-card-button {
+            bottom: 30px;
+        }
+    }
+}

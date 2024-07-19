@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./restaurantCard.scss";
+import { createRating } from "../../../services/createRating";
+import { getTime } from "../../../services/getTime";
 const RestaurantCard = ({ restaurant }) => {
   const [rateStars, setRateStars] = useState([]);
+
   useEffect(() => {
-    createRating();
+    setRateStars(createRating(restaurant.rating));
   }, []);
 
-  const createRating = () => {
-    let rating = [];
-    for (let i = 1; i <= 5; i++) {
-      i <= restaurant.rating ? rating.push("full") : rating.push("empty");
-    }
-    setRateStars(rating);
-  };
-
-  const getTime = (date) => {
-    const time = new Date(date);
-    return `${time.getHours()}:${time.getMinutes()}0`;
-  };
   return (
     <section className="restaurant-card">
       <figure className="restaurant-card__image-container">
@@ -33,11 +24,7 @@ const RestaurantCard = ({ restaurant }) => {
           {rateStars.length &&
             rateStars.map((rate, i) => (
               <img
-                className={`restaurant-card__rating ${
-                  rate === "full"
-                    ? "restaurant-card__rating--full"
-                    : "restaurant-card__rating--empty"
-                }`}
+                className={`restaurant-card__rating restaurant-card__rating--${rate}`}
                 key={i}
                 src="../images/star-full.svg"
                 alt="star icon"
