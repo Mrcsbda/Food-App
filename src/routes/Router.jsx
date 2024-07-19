@@ -10,6 +10,7 @@ import DishInfo from "../pages/dishInfo/DishInfo";
 import EditUserInfo from "../pages/editUserInfo/EditUserInfo";
 import OrderStatus from "../pages/orderStatus/OrderStatus";
 import PaymentMethods from "../pages/paymentMethods/PaymentMethods";
+import RestaurantInfo from "../pages/restaurantInfo/RestaurantInfo";
 
 // const router = createBrowserRouter([
 //   {
@@ -47,10 +48,11 @@ const Router = () => {
           <Route path="profile/:id" element={<UserProfile />} />
           <Route path="add-new-card" element={<AddNewCard />} />
           <Route path="new-order" element={<Cart />} />
-          <Route path="/:restaurant/:id" element={<DishInfo />} />
+          <Route path=":restaurant/:id" element={<DishInfo />} />
           <Route path="edit-profile" element={<EditUserInfo />} />
           <Route path="order-status" element={<OrderStatus />} />
           <Route path="payment-methods" element={<PaymentMethods />} />
+          <Route path=":restaurant" element={<RestaurantInfo />} />
         </Route>
       </Routes>
     </BrowserRouter>
