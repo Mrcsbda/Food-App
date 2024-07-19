@@ -1,0 +1,178 @@
+@import "../../assets/styles/variables.scss";
+
+.sign-in {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    max-height: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    &__delivery-logo-container {
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+    &__form {
+        gap: 0.8rem;
+        width: 100%;
+        max-width: 350px;
+        display: flex;
+        padding: 0 0.5rem;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__title {
+        font-size: 2rem;
+        color: $dark-color;
+        margin-bottom: 0.5rem;
+    }
+
+    &__label {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.8rem;
+        flex-direction: column;
+
+        span {
+            font-size: 16px;
+            padding-left: 10px;
+            color: $gray-color;
+            align-self: flex-start;
+        }
+    }
+
+    &__email,
+    &__password {
+        width: 95%;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        padding: 0.5rem;
+        color: $dark-color;
+        border-bottom: 1px solid $gray-color;
+    }
+
+    &__password {
+        margin-bottom: 0.5rem;
+    }
+
+    &__google-icon {
+        width: 1.2rem;
+        filter: invert(22%) sepia(1%) saturate(0%) hue-rotate(7deg) brightness(98%) contrast(87%);
+    }
+
+    &__buttons-container {
+        width: 100%;
+        gap: 0.7rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__sign-in-button,
+    &__google-button {
+        width: 45%;
+        gap: 0.3rem;
+        border: none;
+        display: flex;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 8px;
+        align-items: center;
+        justify-content: center;
+        background-color: $main-color;
+
+        span {
+            color: $dark-color;
+            font-size: 1rem;
+        }
+    }
+
+    &__create-account {
+        width: 93%;
+        text-align: end;
+        cursor: pointer;
+        color: $dark-color;
+        text-decoration: underline;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .sign-in {
+
+        &__form {
+            gap: 1.3rem;
+            max-width: 370px;
+        }
+
+        &__title {
+            font-size: 2.2rem;
+        }
+
+        &__label {
+            span {
+                font-size: 18px;
+            }
+        }
+
+        &__email,
+        &__password,
+        &__name {
+            font-size: 17px;
+        }
+
+        &__google-icon {
+            width: 1.4rem;
+        }
+
+        &__buttons-container {
+            margin-bottom: 0rem;
+        }
+
+        &__sign-in-button,
+        &__google-button {
+            &:hover {
+                background-color: $main-color-hover;
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    .sign-in {
+        &__form {
+            gap: 1.5rem;
+            max-width: 400px;
+        }
+
+        &__title {
+            margin-bottom: 0;
+        }
+
+        &__email,
+        &__password,
+        &__name {
+            font-size: 18px;
+        }
+
+        &__google-icon {
+            width: 1.6rem;
+        }
+
+        &__sign-in-button,
+        &__google-button {
+            span {
+                font-size: 1.06rem;
+            }
+        }
+
+        &__create-account {
+            font-size: 18px;
+        }
+    }
+
+}

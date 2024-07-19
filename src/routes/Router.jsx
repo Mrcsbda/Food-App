@@ -11,6 +11,8 @@ import EditUserInfo from "../pages/editUserInfo/EditUserInfo";
 import OrderStatus from "../pages/orderStatus/OrderStatus";
 import PaymentMethods from "../pages/paymentMethods/PaymentMethods";
 import RestaurantInfo from "../pages/restaurantInfo/RestaurantInfo";
+import SignIn from "../pages/signIn/SignIn";
+import SignUp from "../pages/signUp/SignUp";
 
 // const router = createBrowserRouter([
 //   {
@@ -54,6 +56,8 @@ const Router = () => {
           <Route path="payment-methods" element={<PaymentMethods />} />
           <Route path=":restaurant" element={<RestaurantInfo />} />
         </Route>
+        <Route path="sign-in" element={<SignIn />} />
+        <Route path="sign-up" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
