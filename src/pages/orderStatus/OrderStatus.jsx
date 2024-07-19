@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import CurrentOrder from "../../components/orderStatus/currentOrder/CurrentOrder";
+import FinishedOrder from "../../components/orderStatus/finishedOrder/FinishedOrder";
 
 const OrderStatus = () => {
-  const [orderStep, setOrderStep] = useState(1);
+  const [orderStep, setOrderStep] = useState(6);
   return (
     <>
-      <CurrentOrder orderStep={orderStep} />
+      {orderStep <= 5 ? (
+        <CurrentOrder orderStep={orderStep} />
+      ) : (
+        <FinishedOrder />
+      )}
     </>
   );
 };
