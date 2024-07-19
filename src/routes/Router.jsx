@@ -9,6 +9,7 @@ import Cart from "../pages/cart/Cart";
 import DishInfo from "../pages/dishInfo/DishInfo";
 import EditUserInfo from "../pages/editUserInfo/EditUserInfo";
 import OrderStatus from "../pages/orderStatus/OrderStatus";
+import PaymentMethods from "../pages/paymentMethods/PaymentMethods";
 
 // const router = createBrowserRouter([
 //   {
@@ -49,6 +50,7 @@ const Router = () => {
           <Route path="/:restaurant/:id" element={<DishInfo />} />
           <Route path="edit-profile" element={<EditUserInfo />} />
           <Route path="order-status" element={<OrderStatus />} />
+          <Route path="payment-methods" element={<PaymentMethods />} />
         </Route>
       </Routes>
     </BrowserRouter>
