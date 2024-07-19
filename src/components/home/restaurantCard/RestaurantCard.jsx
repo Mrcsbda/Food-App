@@ -33,11 +33,7 @@ const RestaurantCard = ({ restaurant }) => {
           {rateStars.length &&
             rateStars.map((rate, i) => (
               <img
-                className={`restaurant-card__rating ${
-                  rate === "full"
-                    ? "restaurant-card__rating--full"
-                    : "restaurant-card__rating--empty"
-                }`}
+                className={`restaurant-card__rating restaurant-card__rating--${rate}`}	
                 key={i}
                 src="../images/star-full.svg"
                 alt="star icon"

@@ -12,7 +12,25 @@ const Home = () => {
       endTime: 1693015200000,
       image:
         "https://res.cloudinary.com/dd3qzm4in/image/upload/v1692933249/deliveryApp/los%20perritos/losPerritos_sttg69.webp",
+      rating: 3,
+      startTime: 1692972000000,
+    },
+    {
+      deliveryPrice: 5,
+      name: "McDonalds",
+      endTime: 1693015200000,
+      image:
+        "https://res.cloudinary.com/dd3qzm4in/image/upload/v1692933249/deliveryApp/los%20perritos/losPerritos_sttg69.webp",
       rating: 5,
+      startTime: 1692972000000,
+    },
+    {
+      deliveryPrice: 5,
+      name: "McDonalds",
+      endTime: 1693015200000,
+      image:
+        "https://res.cloudinary.com/dd3qzm4in/image/upload/v1692933249/deliveryApp/los%20perritos/losPerritos_sttg69.webp",
+      rating: 2,
       startTime: 1692972000000,
     },
     {
@@ -39,25 +57,7 @@ const Home = () => {
       endTime: 1693015200000,
       image:
         "https://res.cloudinary.com/dd3qzm4in/image/upload/v1692933249/deliveryApp/los%20perritos/losPerritos_sttg69.webp",
-      rating: 5,
-      startTime: 1692972000000,
-    },
-    {
-      deliveryPrice: 5,
-      name: "McDonalds",
-      endTime: 1693015200000,
-      image:
-        "https://res.cloudinary.com/dd3qzm4in/image/upload/v1692933249/deliveryApp/los%20perritos/losPerritos_sttg69.webp",
-      rating: 5,
-      startTime: 1692972000000,
-    },
-    {
-      deliveryPrice: 5,
-      name: "McDonalds",
-      endTime: 1693015200000,
-      image:
-        "https://res.cloudinary.com/dd3qzm4in/image/upload/v1692933249/deliveryApp/los%20perritos/losPerritos_sttg69.webp",
-      rating: 5,
+      rating: 1,
       startTime: 1692972000000,
     },
   ];

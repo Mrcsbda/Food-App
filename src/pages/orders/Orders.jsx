@@ -89,7 +89,7 @@ const Orders = () => {
               </div>
               <div className="orders__order-status-container">
                 <p
-                  className={`"orders__order-status" orders__order-status--${order.status.toLowerCase()}`}
+                  className={`orders__order-status orders__order-status--${order.status.toLowerCase()}`}
                 >
                   {titleCase(order.status)}
                 </p>
