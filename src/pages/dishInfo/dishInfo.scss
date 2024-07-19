@@ -1,0 +1,346 @@
+@import "../../assets/styles/variables.scss";
+
+.dish {
+    display: flex;
+    flex-direction: column;
+
+    &__info-container {
+        width: 100%;
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__arrow-prev-icon {
+        top: 1.2rem;
+        left: 1rem;
+        width: 1.5rem;
+        position: absolute;
+    }
+
+    &__image-container {
+        width: 100%;
+        height: 260px;
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        border-radius: 0 0 20px 20px;
+        object-fit: cover;
+    }
+
+    &__info {
+        width: 100%;
+        padding: 0 1.4rem;
+    }
+
+    &__title-container {
+        width: 100%;
+        display: flex;
+        margin-bottom: 1rem;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 400;
+        color: $dark-color;
+    }
+
+    &__time-container {
+        gap: 0.2rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__time-icon {
+        width: 1rem;
+        filter: invert(21%) sepia(1%) saturate(695%) hue-rotate(104deg) brightness(102%) contrast(87%);
+    }
+
+    &__time {
+        font-size: 13px;
+        font-weight: 400;
+        color: $dark-color;
+    }
+
+    &__description {
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 18px;
+        color: $dark-color;
+        margin-bottom: 1rem;
+    }
+
+    &__additional-info {
+        padding: 0 1.4rem;
+    }
+
+    &__additional-info-title {
+        font-size: 16px;
+        font-weight: 400;
+        color: $gray-color;
+        margin-bottom: 0.8rem;
+    }
+
+    &__additional-info-container {
+        gap: 0.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__addition {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__addition-container {
+        gap: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__addition-text,
+    &__addition-price {
+        font-size: 15px;
+        font-weight: 300;
+        color: $dark-color;
+    }
+
+    &__order-buttons-container {
+        left: 0;
+        gap: 1rem;
+        width: 100%;
+        bottom: 70px;
+        display: flex;
+        position: absolute;
+        padding: 0 1.5rem;
+        justify-content: center;
+    }
+
+    &__order-buttons {
+        width: 40%;
+        display: flex;
+        max-width: 120px;
+        align-items: center;
+        border-radius: 7px;
+        background-color: $light-gray;
+        justify-content: space-between;
+    }
+
+    &__minus-button,
+    &__plus-button {
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: $dark-color;
+        padding: 0.7rem 1rem;
+        background-color: transparent;
+    }
+
+    &__quantity {
+        font-size: 16px;
+        color: $dark-color;
+    }
+
+    &__add-to-cart-button {
+        width: 60%;
+        border: none;
+        display: flex;
+        cursor: pointer;
+        max-width: 170px;
+        border-radius: 7px;
+        align-items: center;
+        padding: 0.7rem 1rem;
+        background-color: $main-color;
+        justify-content: space-between;
+    }
+
+    &__add-to-cart-text,
+    &__add-to-cart-total {
+        border: none;
+        font-size: 15px;
+        font-weight: 300;
+        color: $dark-color;
+        background-color: transparent;
+    }
+}
+
+input[type="checkbox"]:checked {
+    border: none;
+    background-color: $main-color;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    clip-path: polygon(39% 84%, 87% 0, 100% 8%, 46% 100%, 33% 100%, 0 66%, 10% 55%);
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    font: inherit;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    transform: translateY(-.075em);
+    border: 1px solid $gray-color;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+}
+
+@media screen and (min-width: 651px) {
+    .dish {
+        align-items: center;
+
+        &__info-container {
+            gap: 0.5rem;
+            padding: 1.5rem;
+            width: max-content;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        &__arrow-prev-icon {
+            display: none;
+        }
+
+        &__image-container {
+            height: 220px;
+            max-width: 220px;
+            margin-bottom: 0;
+        }
+
+        &__image {
+            border-radius: 10px;
+        }
+
+        &__info {
+            overflow: auto;
+            padding: 1.4rem;
+            max-width: 350px;
+            position: relative;
+
+            &::before {
+                content: "";
+                left: 22px;
+                width: 70%;
+                height: 1px;
+                opacity: 0.5;
+                bottom: 7px;
+                position: absolute;
+                background-color: $dark-color;
+            }
+        }
+
+        &__title-container {
+            width: 95%;
+
+        }
+
+        &__description {
+            line-height: 19px;
+            margin-bottom: 0;
+        }
+
+        &__additional-info {
+            padding: 0 1.6rem;
+            margin-bottom: 2.5rem;
+        }
+
+        &__additional-info-title {
+            margin-bottom: 0.9rem;
+        }
+
+        &__additional-info-container {
+            gap: 0.7rem;
+        }
+
+        &__order-buttons-container {
+            position: static;
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .dish {
+
+        &__image-container {
+            height: 240px;
+            max-width: 240px;
+        }
+
+        &__info {
+            max-width: 450px;
+        }
+
+        &__title {
+            font-size: 22px;
+            ;
+        }
+
+        &__time-container {
+            gap: 0.3rem;
+        }
+
+        &__time-icon {
+            width: 1.2rem;
+        }
+
+        &__time {
+            font-size: 15px;
+        }
+
+        &__description {
+            font-size: 17px;
+            line-height: 21px;
+        }
+
+        &__additional-info {
+            margin-bottom: 3.5rem;
+        }
+
+        &__additional-info-title {
+            font-size: 18px;
+        }
+
+        &__addition-text,
+        &__addition-price {
+            font-size: 17px;
+
+        }
+
+        &__order-buttons {
+            max-width: 130px;
+        }
+
+        &__minus-button,
+        &__plus-button {
+            font-size: 18px;
+        }
+
+        &__quantity {
+            font-size: 18px;
+        }
+
+        &__add-to-cart-button {
+            max-width: 190px;
+        }
+
+        &__add-to-cart-text,
+        &__add-to-cart-total {
+            font-size: 17px;
+        }
+
+
+    }
+}
