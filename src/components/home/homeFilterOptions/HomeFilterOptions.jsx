@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import titleCase from "../../../services/titleCase";
-const HomeFilterOptions = () => {
+const HomeFilterOptions = ({ filterRestaurants }) => {
   const [selectedOption, setSelectedOption] = useState("ALL");
   const filterOptions = [
     {
@@ -28,6 +28,8 @@ const HomeFilterOptions = () => {
       path: "../images/chicken.png",
     },
   ];
+
+
 
   return (
     <Swiper
@@ -58,13 +60,17 @@ const HomeFilterOptions = () => {
     >
       {filterOptions.map((option, index) => {
         return (
-          <SwiperSlide key={index} onClick={() => setSelectedOption(option.value)}>
+          <SwiperSlide
+            key={index}
+            onClick={() => setSelectedOption(option.value)}
+          >
             <section
               className={`home__filter-option ${
                 option.value == selectedOption
                   ? "home__filter-option--selected"
                   : ""
               }`}
+              onClick={() => filterRestaurants(option.value)}
             >
               {option?.path && (
                 <img
