@@ -34,9 +34,7 @@ const Home = () => {
       <HomeCarrousel />
       <h1 className="home__title">Restaurants</h1>
       <article className="home__filter-options">
-        <HomeFilterOptions
-          filterRestaurants={filterRestaurants}
-        />
+        <HomeFilterOptions filterRestaurants={filterRestaurants} />
       </article>
       <article className="home__restaurants">
         {restaurants.map((restaurant, index) => {

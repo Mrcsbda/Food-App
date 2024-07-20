@@ -38,6 +38,7 @@ const HeaderDesktop = () => {
   const handleRoutes = (path) => {
     navigate(`/${path}`);
   };
+
   const { isLogged } = useSelector((state) => state.user);
   return (
     <header className="header-desktop">
@@ -86,13 +87,21 @@ const HeaderDesktop = () => {
         <hr />
         {!isLogged ? (
           <article className="header-desktop__login-options">
-            <button className="header-desktop__login-button">Login</button>
-            <button className="header-desktop__signup-button">Sign Up</button>
+            <button
+              className="header-desktop__login-button"
+              onClick={() => handleRoutes("sign-in")}
+            >
+              Login
+            </button>
+            <button
+              className="header-desktop__signup-button"
+              onClick={() => handleRoutes("sign-up")}
+            >
+              Sign Up
+            </button>
           </article>
         ) : (
-          <figure
-            className="header-desktop__shopping-cart-container"
-          >
+          <figure className="header-desktop__shopping-cart-container">
             <img
               src="../images/cart.svg"
               alt="shopping cart icon"

@@ -23,9 +23,15 @@ body {
 
 .home {
     padding: 0rem 1.5rem 4.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
 
     &__carrousel {
         margin-bottom: 0.8rem;
+        width: 100%;
+        display: flex;
+        max-width: 1500px;
+        align-self: center;
     }
 
     &__carrousel-image {
@@ -44,14 +50,11 @@ body {
     }
 
     &__filter-options {
-        gap: 0.5rem;
         width: 100%;
         display: flex;
-        overflow: auto;
-        border-radius: 5px;
-        scrollbar-width: 0;
         margin-bottom: 1.5rem;
-        scrollbar-color: transparent transparent;
+        max-width: 1500px;
+        align-self: center;
     }
 
     &__filter-option {
@@ -120,6 +123,8 @@ body {
     .home {
         &__title {
             font-size: 18px;
+            text-align: center;
+            margin: 1rem 0px;
         }
 
         &__carrousel-image {
