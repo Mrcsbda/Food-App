@@ -11,13 +11,18 @@ const initialState = {
   loginMethod: null,
   name: null,
   phone: null,
-  paymentMethod: []
+  paymentMethod: [],
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    login: (state, { payload }) => {
+      state = { ...state, ...payload, isLogged: true };
+      console.log(state);
+    },
+  },
 });
 
-export const {} = userSlice.actions;
+export const { login } = userSlice.actions;

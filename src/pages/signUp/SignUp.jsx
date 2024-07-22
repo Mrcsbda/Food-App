@@ -13,8 +13,7 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     // do validation empty inputs
     const resp = await dispatch(signUpWithEmailAndPassword(data))
-    console.log(data);
-
+    console.log(resp)
   };
 
   return (

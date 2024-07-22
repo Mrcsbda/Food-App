@@ -9,10 +9,6 @@ const SignIn = () => {
     navigate(`/${path}`);
   };
 
-
-
-
-
   return (
     <main className="sign-in">
       <figure className="sign-in__delivery-logo-container">
