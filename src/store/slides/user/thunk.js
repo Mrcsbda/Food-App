@@ -27,7 +27,7 @@ export const signUpWithEmailAndPassword = (data) => {
         delete user.createdAt
         delete user.updatedAt
         dispatch(login(user));
-        return true;
+        return "ok";
       } else {
         return resp.errorMessage;
       }
