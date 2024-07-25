@@ -4,51 +4,81 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { signUpWithEmailAndPassword } from "../../store/slides/user/thunk";
 import titleCase from "../../services/titleCase";
+import Loader from "../../components/loader/Loader";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const SignUp = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validateInputs = (data) => {
-    if (!data.name.length || !data.email.length || !data.password.length || data.password.length < 8) {
+    if (
+      !data.name.length ||
+      !data.email.length ||
+      !data.password.length ||
+      data.password.length < 8
+    ) {
       showErrorMessage(data);
       setError(true);
-      return false
+      return false;
     } else {
       setError(false);
-      return true
+      return true;
     }
   };
 
   const showErrorMessage = (data) => {
     let message = "";
+    let emptyInputs = "";
     const inputs = ["name", "email", "password"];
     inputs.forEach((item) => {
       if (!data[item].length) {
-        message = `${message} ${titleCase(item)}`;
+        emptyInputs = `${emptyInputs} ${titleCase(item)}`;
       }
     });
-    if(data.password.length < 8 && data.password.length > 0) {
-      message = `${message} Password`;
+    if (data.password.length < 8 && data.password.length > 0) {
+      emptyInputs = `${emptyInputs} Password`;
     }
+    message = `The following fields are empty or incomplete: ${emptyInputs}`;
     setErrorMessage(message);
   };
 
   const onSubmit = async (data) => {
     let infoIsValid = validateInputs(data);
     if (infoIsValid) {
-      const resp = await dispatch(signUpWithEmailAndPassword(...data));
+      setLoading(true);
+      const resp = await dispatch(signUpWithEmailAndPassword(data));
+      setLoading(false);
+      switch (resp) {
+        case "ok":
+          Swal.fire(
+            'Excellent!',
+            'Successful registration!',
+            'success'
+          ).then(
+            reset(),
+            navigate("/")
+          )
+          break;
+        case "Firebase: Error (auth/email-already-in-use).":
+          setError(true);
+          setErrorMessage("Email already in use");
+          break;
+        default:
+          setError(true);
+          setErrorMessage("Something went wrong, try again later");
+          break;
+      }
     }
   };
 
   return (
     <main className="sign-up">
+      {loading && <Loader />}
       <h1 className="sign-up__title">Create account</h1>
       <form className="sign-up__form" onSubmit={handleSubmit(onSubmit)}>
         <section className="sign-up__inputs-container">
@@ -79,11 +109,7 @@ const SignUp = () => {
               {...register("password")}
             />
           </label>
-          {error && (
-            <p className="sign-up__error-message">
-              The following fields are empty or incomplete: {errorMessage}
-            </p>
-          )}
+          {error && <p className="sign-up__error-message">{errorMessage}</p>}
         </section>
         <button type="submit" className="sign-up__sign-up-button">
           Sign Up

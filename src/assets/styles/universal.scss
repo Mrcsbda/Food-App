@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import "./variables.scss";
 
 html {
     box-sizing: border-box;
@@ -11,4 +12,13 @@ html {
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
+}
+
+.swal2-confirm {
+    font-family: 'Roboto', sans-serif;
+    background-color: $main-color!important;
+    box-shadow: none !important;
+    &:hover {
+     transform: scale(1.02);
+    }
 }
