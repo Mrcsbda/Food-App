@@ -5,7 +5,7 @@ import AddressHeader from "../addressHeader/AddressHeader";
 import { useNavigate } from "react-router-dom";
 
 const HeaderDesktop = () => {
-  const key = 1;
+  const { isLogged, id } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const headerOptions = [
     {
@@ -32,14 +32,13 @@ const HeaderDesktop = () => {
     },
     {
       title: "Profile",
-      path: `profile/${key}`,
+      path: `profile/${id}`,
     },
   ];
   const handleRoutes = (path) => {
     navigate(`/${path}`);
   };
 
-  const { isLogged } = useSelector((state) => state.user);
   return (
     <header className="header-desktop">
       <section className="header-desktop__logo-and-address-container">
@@ -50,7 +49,7 @@ const HeaderDesktop = () => {
             className="header-desktop__logo"
           />
         </figure>
-        <AddressHeader />
+        {isLogged && <AddressHeader />}
       </section>
       <section className="header-desktop__nav-container">
         <nav className="header-desktop__nav">

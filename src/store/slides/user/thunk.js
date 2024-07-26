@@ -3,16 +3,8 @@ import {
   registerUserWithEmailPassword,
   signInWithGoogle,
 } from "../../../firebase/providers";
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  getDocs,
-  setDoc,
-} from "firebase/firestore";
 import { addNewUser, getUserById } from "../../../services/firebase/users";
+import { saveToLocaStorage } from "../../../services/storage";
 import { login } from "./user";
 
 export const signUpWithEmailAndPassword = (data) => {
@@ -32,6 +24,7 @@ export const signUpWithEmailAndPassword = (data) => {
         delete user.updatedAt;
         user.id = resp.uid;
         dispatch(login(user));
+        saveToLocaStorage("user", user);
         return "ok";
       } else {
         return resp.errorMessage;
@@ -52,6 +45,7 @@ export const loginWithEmail = ({ email, password }) => {
         delete userData.updatedAt;
         userData.id = resp.uid;
         dispatch(login(userData));
+        saveToLocaStorage("user", userData);
         return "ok";
       } else {
         return resp.errorMessage;
@@ -66,7 +60,6 @@ export const startGoogleSignIn = () => {
   return async (dispatch) => {
     try {
       const resp = await signInWithGoogle();
-      console.log(resp)
       if (resp.ok) {
         const userInfo = {
           avatar: resp.avatar,
@@ -83,12 +76,14 @@ export const startGoogleSignIn = () => {
           delete user.updatedAt;
           user.id = resp.id;
           dispatch(login(user));
+          saveToLocaStorage("user", user);
         } else {
           await addNewUser(resp.id, userInfo);
           delete userInfo.createdAt;
           delete userInfo.updatedAt;
           userInfo.id = resp.id;
           dispatch(login(userInfo));
+          saveToLocaStorage("user", userInfo);
         }
       }
       return resp.ok
