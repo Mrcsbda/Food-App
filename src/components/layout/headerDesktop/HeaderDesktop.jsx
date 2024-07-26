@@ -5,7 +5,7 @@ import AddressHeader from "../addressHeader/AddressHeader";
 import { useNavigate } from "react-router-dom";
 
 const HeaderDesktop = () => {
-  const { isLogged, id } = useSelector((state) => state.user);
+  const { isLogged } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const headerOptions = [
     {
@@ -32,7 +32,7 @@ const HeaderDesktop = () => {
     },
     {
       title: "Profile",
-      path: `profile/${id}`,
+      path: `profile`,
     },
   ];
   const handleRoutes = (path) => {

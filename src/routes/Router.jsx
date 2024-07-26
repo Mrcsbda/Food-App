@@ -51,7 +51,6 @@ const Router = () => {
   const [validateRoutes, setValidateRoutes] = useState(false);
 
   useEffect(() => {
-    console.log("isLogged", isLogged);
     validateUser();
   }, []);
 
@@ -72,7 +71,7 @@ const Router = () => {
             <Route path=":restaurant" element={<RestaurantInfo />} />
             <Route element={<PrivateRoute isLoggedIn={isLogged} />}>
               <Route path="orders" element={<Orders />} />
-              <Route path="profile/:id" element={<UserProfile />} />
+              <Route path="profile" element={<UserProfile />} />
               <Route path="add-new-card" element={<AddNewCard />} />
               <Route path="new-order" element={<Cart />} />
               <Route path="edit-profile" element={<EditUserInfo />} />

@@ -19,9 +19,22 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload }) => {
-      Object.assign(state, payload, { isLogged: true,  });
+      Object.assign(state, payload, { isLogged: true });
+    },
+    logout: (state) => {
+      state.isLogged = false;
+      state.id = null;
+      state.address = null;
+      state.avatar = null;
+      state.birthday = null;
+      state.email = null;
+      state.name = null;
+      state.loginMethod = null;
+      state.name = null;
+      state.phone = null;
+      state.paymentMethod = [];
     },
   },
 });
 
-export const { login } = userSlice.actions;
+export const { login, logout} = userSlice.actions;
