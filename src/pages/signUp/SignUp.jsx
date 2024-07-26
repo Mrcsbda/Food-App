@@ -55,14 +55,8 @@ const SignUp = () => {
       setLoading(false);
       switch (resp) {
         case "ok":
-          Swal.fire(
-            'Excellent!',
-            'Successful registration!',
-            'success'
-          ).then(
-            reset(),
-            navigate("/")
-          )
+          reset();
+          navigate("/");
           break;
         case "Firebase: Error (auth/email-already-in-use).":
           setError(true);

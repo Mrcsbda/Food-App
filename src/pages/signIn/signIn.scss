@@ -98,6 +98,13 @@
         color: $dark-color;
         text-decoration: underline;
     }
+
+    &__error-message {
+        color: $red-color;
+        font-size: 15px;
+        text-align: center;
+        padding: 1rem 0;
+    }
 }
 
 @media screen and (min-width: 1100px) {
@@ -172,6 +179,10 @@
 
         &__create-account {
             font-size: 18px;
+        }
+
+        &__error-message {
+            font-size: 16px;
         }
     }
 

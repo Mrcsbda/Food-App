@@ -29,3 +29,15 @@ export const registerUserWithEmailPassword = async ({
     return { ok: false, errorMessage: error.message };
   }
 };
+export const loginWithEmailAndPassword = async (email, password) => {
+  try {
+      const resp = await signInWithEmailAndPassword(firebaseAuth, email, password);
+      const { uid } = resp.user
+      return {
+          ok: true,
+          uid
+      }
+  } catch (error) {
+      return { ok: false, errorMessage: error.message }
+  }
+}
