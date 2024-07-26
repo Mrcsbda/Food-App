@@ -3,7 +3,7 @@ import "./signIn.scss";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { loginWithEmail } from "../../store/slides/user/thunk";
+import { loginWithEmail, startGoogleSignIn } from "../../store/slides/user/thunk";
 import Loader from "../../components/loader/Loader";
 import Swal from "sweetalert2";
 import { setAlerts } from "../../services/alerts";
@@ -20,12 +20,13 @@ const SignIn = () => {
   };
 
   const onSubmit = async (data) => {
+    setError(false);
     setLoading(true);
     const resp = await dispatch(loginWithEmail(data));
     setLoading(false);
     switch (resp) {
       case "ok":
-        setAlerts("login")
+        setAlerts("login");
         reset();
         navigate("/");
         break;
@@ -38,6 +39,21 @@ const SignIn = () => {
         setErrorMessage("Something went wrong, try again later");
         break;
     }
+  };
+
+  const signInGoogle = async () => {
+    setError(false);
+    setLoading(true);
+    const resp = await dispatch(startGoogleSignIn());
+    if(resp) {
+      setAlerts("login");
+      reset();
+      navigate("/");
+    } else {
+      setError(true);
+      setErrorMessage("Something went wrong, try again later");
+    }
+    setLoading(false);
   };
 
   return (
@@ -68,7 +84,7 @@ const SignIn = () => {
           <button className="sign-in__sign-in-button">
             <span> Sign In </span>
           </button>
-          <button className="sign-in__google-button">
+          <button type="button" className="sign-in__google-button" onClick={signInGoogle}>
             <img
               src="../images/google.svg"
               alt="google icon"

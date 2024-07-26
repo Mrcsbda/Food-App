@@ -19,7 +19,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload }) => {
-      Object.assign(state, payload, { isLogged: true });
+      Object.assign(state, payload, { isLogged: true,  });
     },
   },
 });

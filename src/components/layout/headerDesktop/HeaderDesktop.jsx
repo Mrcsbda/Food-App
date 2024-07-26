@@ -40,7 +40,6 @@ const HeaderDesktop = () => {
   };
 
   const { isLogged } = useSelector((state) => state.user);
-  console.log(isLogged);
   return (
     <header className="header-desktop">
       <section className="header-desktop__logo-and-address-container">
