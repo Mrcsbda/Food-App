@@ -11,9 +11,33 @@ export const getRestaurants = async () => {
         ...doc.data(),
       });
     });
-    return restaurants ;
+    return restaurants;
   } catch (error) {
     console.log(error);
     return error;
+  }
+};
+
+export const getAllDishes = async () => {
+  try {
+    const restaurants = await getRestaurants();
+    let allDishes = [];
+    const restaurantsIds = restaurants.map((restaurant) => restaurant.id);
+    for (let i = 0; i < restaurantsIds.length; i++) {
+      const dishesRef = collection(
+        firebaseDB,
+        `restaurants/${restaurantsIds[i]}/dishes`
+      );
+      const querySnapshot = await getDocs(dishesRef);
+      const dishesInfo = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      allDishes = allDishes.concat(dishesInfo);
+    }
+    return allDishes;
+  } catch (error) {
+    console.log(error);
+    return []
   }
 };
