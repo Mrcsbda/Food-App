@@ -13,6 +13,12 @@ import PaymentMethods from "../pages/paymentMethods/PaymentMethods";
 import RestaurantInfo from "../pages/restaurantInfo/RestaurantInfo";
 import SignIn from "../pages/signIn/SignIn";
 import SignUp from "../pages/signUp/SignUp";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import Loader from "../components/loader/Loader";
+import { login } from "../store/slides/user/user";
+import PublicRoute from "./PublicRoutes";
+import PrivateRoute from "./PrivateRoutes";
 
 // const router = createBrowserRouter([
 //   {
@@ -40,25 +46,49 @@ import SignUp from "../pages/signUp/SignUp";
 // ]);
 
 const Router = () => {
+  const { isLogged } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const [validateRoutes, setValidateRoutes] = useState(false);
+
+  useEffect(() => {
+    validateUser();
+  }, []);
+
+  const validateUser = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    user && dispatch(login(user));
+    setValidateRoutes(true);
+  };
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="search" element={<DishSearch />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="profile/:id" element={<UserProfile />} />
-          <Route path="add-new-card" element={<AddNewCard />} />
-          <Route path="new-order" element={<Cart />} />
-          <Route path=":restaurant/:id" element={<DishInfo />} />
-          <Route path="edit-profile" element={<EditUserInfo />} />
-          <Route path="order-status" element={<OrderStatus />} />
-          <Route path="payment-methods" element={<PaymentMethods />} />
-          <Route path=":restaurant" element={<RestaurantInfo />} />
-        </Route>
-        <Route path="sign-in" element={<SignIn />} />
-        <Route path="sign-up" element={<SignUp />} />
-      </Routes>
+      {validateRoutes ? (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="search" element={<DishSearch />} />
+            <Route path=":restaurant/:id" element={<DishInfo />} />
+            <Route path=":restaurant" element={<RestaurantInfo />} />
+            <Route element={<PrivateRoute isLoggedIn={isLogged} />}>
+              <Route path="orders" element={<Orders />} />
+              <Route path="profile" element={<UserProfile />} />
+              <Route path="add-new-card" element={<AddNewCard />} />
+              <Route path="new-order" element={<Cart />} />
+              <Route path="edit-profile" element={<EditUserInfo />} />
+              <Route path="order-status" element={<OrderStatus />} />
+              <Route path="payment-methods" element={<PaymentMethods />} />
+            </Route>
+          </Route>
+          <Route element={<PublicRoute isLoggedIn={isLogged} />}>
+            <Route path="sign-in" element={<SignIn />} />
+            <Route path="sign-up" element={<SignUp />} />
+          </Route>
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Loader />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 };

@@ -1,3 +1,23 @@
 .header-mobile {
+    display: flex;
+    justify-content: space-between;
+
+
+    &__header-container {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    &__logo-container {
+        display: flex;
+
+    }
+
+    &__logo {
+        width: 3rem;
+        cursor: pointer;
+    }
+
     padding: 1rem 1.5rem;
 }

@@ -5,7 +5,7 @@ import AddressHeader from "../addressHeader/AddressHeader";
 import { useNavigate } from "react-router-dom";
 
 const HeaderDesktop = () => {
-  const key = 1;
+  const { isLogged } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const headerOptions = [
     {
@@ -32,13 +32,13 @@ const HeaderDesktop = () => {
     },
     {
       title: "Profile",
-      path: `profile/${key}`,
+      path: `profile`,
     },
   ];
   const handleRoutes = (path) => {
     navigate(`/${path}`);
   };
-  const { isLogged } = useSelector((state) => state.user);
+
   return (
     <header className="header-desktop">
       <section className="header-desktop__logo-and-address-container">
@@ -49,7 +49,7 @@ const HeaderDesktop = () => {
             className="header-desktop__logo"
           />
         </figure>
-        <AddressHeader />
+        {isLogged && <AddressHeader />}
       </section>
       <section className="header-desktop__nav-container">
         <nav className="header-desktop__nav">
@@ -86,13 +86,21 @@ const HeaderDesktop = () => {
         <hr />
         {!isLogged ? (
           <article className="header-desktop__login-options">
-            <button className="header-desktop__login-button">Login</button>
-            <button className="header-desktop__signup-button">Sign Up</button>
+            <button
+              className="header-desktop__login-button"
+              onClick={() => handleRoutes("sign-in")}
+            >
+              Login
+            </button>
+            <button
+              className="header-desktop__signup-button"
+              onClick={() => handleRoutes("sign-up")}
+            >
+              Sign Up
+            </button>
           </article>
         ) : (
-          <figure
-            className="header-desktop__shopping-cart-container"
-          >
+          <figure className="header-desktop__shopping-cart-container">
             <img
               src="../images/cart.svg"
               alt="shopping cart icon"
