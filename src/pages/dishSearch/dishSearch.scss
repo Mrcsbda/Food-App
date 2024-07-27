@@ -44,6 +44,35 @@
         margin-bottom: 3.5rem;
         grid-template-columns: repeat(2, 1fr);
     }
+
+    &__no-results-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__no-results-image-container {
+        display: flex;
+        width: 100%;
+        max-width: 400px;
+        justify-content: center;
+        align-items: center;
+        padding:2rem;
+    }
+
+    &__no-results-image {
+        width: 100%;
+    }
+
+    &__no-results {
+        color: $dark-color;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 1rem 2rem;
+        max-width: 450px;
+    }
 }
 
 @media screen and (min-width: 650px) {

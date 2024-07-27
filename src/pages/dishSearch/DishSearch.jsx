@@ -9,6 +9,7 @@ const DishSearch = () => {
   const [copyDishesInfo, setCopyDishesInfo] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [respIsOk, setRespIsOk] = useState(false);
 
   useEffect(() => {
     handleSearch();
@@ -21,11 +22,35 @@ const DishSearch = () => {
       setDishesInfo(resp);
       setCopyDishesInfo(resp);
       setLoading(false);
+      setRespIsOk(true);
     } else {
       setLoading(false);
       setError(true);
+      setRespIsOk(false);
     }
   };
+
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function (...args) {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const search = (searchValue) => {
+    let value = searchValue.target.value.toLowerCase();
+    if(!error) {
+      const filteredDishes = copyDishesInfo.filter((dish) => dish.name.toLowerCase().includes(value));
+      setDishesInfo(filteredDishes);
+      }
+  }
+
+  const debouncedSearch = debounce(search, 700);
 
   return (
     <main className="dish-search">
@@ -40,6 +65,7 @@ const DishSearch = () => {
           className="dish-search__search"
           type="text"
           placeholder="Search for a dish"
+          onChange={ debouncedSearch }
         />
         <img
           className="dish-search__delete"
@@ -56,6 +82,16 @@ const DishSearch = () => {
           })}
         </section>
       )}
+      {
+        dishesInfo.length === 0 && respIsOk && (
+          <section className="dish-search__no-results-container">
+            <figure className="dish-search__no-results-image-container">
+              <img src="../images/search-not-found.svg" alt="" className="dish-search__no-results-image"/>
+            </figure>
+            <h1 className="dish-search__no-results">No results that match your search</h1>
+          </section>
+        )
+      }
     </main>
   );
 };

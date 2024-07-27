@@ -32,6 +32,7 @@ export const getAllDishes = async () => {
       const dishesInfo = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
+        restaurantId: restaurantsIds[i],
       }));
       allDishes = allDishes.concat(dishesInfo);
     }
