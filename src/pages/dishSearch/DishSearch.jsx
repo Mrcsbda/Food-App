@@ -67,11 +67,6 @@ const DishSearch = () => {
           placeholder="Search for a dish"
           onChange={ debouncedSearch }
         />
-        <img
-          className="dish-search__delete"
-          src="../images/delete.svg"
-          alt="delete icon"
-        />
       </section>
       {error ? (
         <Error />

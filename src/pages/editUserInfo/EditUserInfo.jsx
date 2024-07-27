@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { goBack } from "../../services/goBack";
 import "./editUserInfo.scss";
+import { useSelector } from "react-redux";
 const EditUserInfo = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const { name, avatar, email, loginMethod, phone, address, birthday } =
+    useSelector((state) => state.user);
   return (
     <main className="edit-user-profile">
       <img
@@ -15,8 +18,8 @@ const EditUserInfo = () => {
       <figure className="edit-user-profile__profile-picture-container">
         <img
           className="edit-user-profile__profile-picture"
-          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt=""
+          src={avatar ? avatar : "../images/no-avatar.webp"}
+          alt={`${name} profile picture`}
         />
         <img
           className="edit-user-profile__edit-picture-icon"
@@ -38,7 +41,7 @@ const EditUserInfo = () => {
           <input
             type="text"
             className="edit-user-profile__input"
-            value="Mariana Castañeda Bedoya"
+            defaultValue={name}
           />
           <img
             className="edit-user-profile__edit-icon"
@@ -50,7 +53,7 @@ const EditUserInfo = () => {
           <input
             type="email"
             className="edit-user-profile__input"
-            value="mariana.c.bedoya.8@gmail.com"
+            defaultValue={email}
           />
           <img
             className="edit-user-profile__edit-icon"
@@ -62,7 +65,7 @@ const EditUserInfo = () => {
           <input
             type="number"
             className="edit-user-profile__input"
-            value="12345678"
+            defaultValue={phone ? phone : ""}
             placeholder="Please enter a number"
           />
           <img
@@ -75,7 +78,7 @@ const EditUserInfo = () => {
           <input
             type="date"
             className="edit-user-profile__input"
-            value="1990-01-01"
+            defaultValue={birthday ? birthday : ""}
             placeholder="Please enter your birth date"
           />
           <img
@@ -88,7 +91,7 @@ const EditUserInfo = () => {
           <input
             type="text"
             className="edit-user-profile__input"
-            value="Carrera 28#40a 9"
+            defaultValue={address ? address : ""}
             placeholder="Please enter your address"
           />
           <img
