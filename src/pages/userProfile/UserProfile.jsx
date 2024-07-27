@@ -1,12 +1,13 @@
 import React from "react";
 import "./userProfile.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/slides/user/user";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const UserProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { name, avatar } = useSelector((state) => state.user);
   const configOptions = [
     {
       icon: "../images/account-edit.svg",
@@ -40,6 +41,7 @@ const UserProfile = () => {
   const handleConfigOptions = (type) => {
     switch (type) {
       case "edit-profile":
+        navigate("/edit-profile");
         break;
       case "edit-payment-methods":
         break;
@@ -70,12 +72,10 @@ const UserProfile = () => {
       <figure className="user-profile__picture-container">
         <img
           className="user-profile__picture"
-          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src={avatar ? avatar : "../images/no-avatar.webp"}
           alt="profile picture"
         />
-        <figcaption className="user-profile__user-name">
-          Mariana Castañeda
-        </figcaption>
+        <figcaption className="user-profile__user-name">{name}</figcaption>
       </figure>
       <section className="user-profile__options-container">
         {configOptions.map((option, index) => {

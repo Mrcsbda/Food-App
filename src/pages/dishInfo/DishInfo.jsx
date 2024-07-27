@@ -10,6 +10,7 @@ const DishInfo = () => {
     description:
       "Our Quesudo Hot Dog is made with warm bread, baked Zenú sausage, melted cheese, our rich and fresh salad and potato chips.",
   };
+  
   return (
     <main className="dish">
       <section className="dish__container">
@@ -47,9 +48,9 @@ const DishInfo = () => {
             Additional ingredients
           </h2>
           <div className="dish__additional-info-container">
-            {dish.adittions.map((adittion) => {
+            {dish.adittions.map((adittion, index) => {
               return (
-                <div className="dish__addition">
+                <div className="dish__addition" key={index}>
                   <div className="dish__addition-container">
                     <input type="checkbox" />
                     <p className="dish__addition-text">{adittion}</p>
