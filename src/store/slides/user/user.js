@@ -10,8 +10,7 @@ const initialState = {
   name: null,
   loginMethod: null,
   name: null,
-  phone: null,
-  paymentMethod: [],
+  phone: null
 };
 
 export const userSlice = createSlice({
@@ -20,6 +19,9 @@ export const userSlice = createSlice({
   reducers: {
     login: (state, { payload }) => {
       Object.assign(state, payload, { isLogged: true });
+    },
+    updateInfoUser (state, { payload }) {
+      Object.assign(state, payload);
     },
     logout: (state) => {
       state.isLogged = false;
@@ -37,4 +39,4 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout} = userSlice.actions;
+export const { login, logout, updateInfoUser} = userSlice.actions;

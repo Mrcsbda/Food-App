@@ -1,13 +1,79 @@
 import React, { useState } from "react";
 import { goBack } from "../../services/goBack";
 import "./editUserInfo.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import { editInfoUser } from "../../services/firebase/users";
+import { updateInfoUser } from "../../store/slides/user/user";
+import { setAlerts } from "../../services/alerts";
+import Loader from "../../components/loader/Loader";
 const EditUserInfo = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const { name, avatar, email, loginMethod, phone, address, birthday } =
+  const { name, avatar, email, loginMethod, phone, address, birthday, id } =
     useSelector((state) => state.user);
+  const { register, handleSubmit } = useForm();
+  const distpatch = useDispatch();
+  const initialState = {
+    name: false,
+    email: false,
+    phone: false,
+    birthday: false,
+    address: false,
+  };
+  const [inputsIsAvailable, setInputsIsAvailable] = useState(initialState);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const editInfo = (type) => {
+    if (type === "email" && loginMethod === "GOOGLE") {
+      return;
+    }
+    setInputsIsAvailable((prevState) => ({
+      ...prevState,
+      [type]: !prevState[type],
+    }));
+  };
+
+  const saveInfo = async (data) => {
+    const formData = data;
+    if (formData.birthday) {
+      formData.birthday = new Date(formData.birthday).getTime();
+    }
+
+    !formData.name && delete formData.name;
+    !formData.email && delete formData.email;
+    !formData.phone && delete formData.phone;
+    !formData.birthday && delete formData.birthday;
+    !formData.address && delete formData.address;
+    if (Object.keys(formData).length) {
+      setLoading(true);
+      const resp = await editInfoUser({ formData, id });
+      setLoading(false);
+      if (resp) {
+        setError(false);
+        distpatch(updateInfoUser(formData));
+        setAlerts("edit");
+        setInputsIsAvailable(initialState);
+      } else {
+        setError(true);
+      }
+    }
+  };
+
+  const getTime = (userBirthday) => {
+    const date = new Date(userBirthday);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate() + 1).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  };
+
   return (
     <main className="edit-user-profile">
+      {
+        loading && (<Loader/>)
+      }
       <img
         className="edit-user-profile__arrow-prev"
         src="..//images/arrow-prev.svg"
@@ -36,74 +102,133 @@ const EditUserInfo = () => {
           </button>
         </form>
       )}
-      <form className="edit-user-profile__form-update-info">
-        <div className="edit-user-profile__input-container">
+      <form
+        className="edit-user-profile__form-update-info"
+        onSubmit={handleSubmit(saveInfo)}
+      >
+        <div
+          className={`edit-user-profile__input-container ${
+            inputsIsAvailable.name
+              ? ""
+              : "edit-user-profile__input-container--disabled"
+          }`}
+        >
           <input
             type="text"
             className="edit-user-profile__input"
             defaultValue={name}
+            disabled={!inputsIsAvailable.name}
+            {...register("name")}
           />
           <img
             className="edit-user-profile__edit-icon"
             src="../images/edit.svg"
             alt="edit icon"
+            onClick={() => editInfo("name")}
           />
         </div>
-        <div className="edit-user-profile__input-container">
+        <div
+          className={`edit-user-profile__input-container ${
+            inputsIsAvailable.email
+              ? ""
+              : "edit-user-profile__input-container--disabled"
+          }`}
+        >
           <input
             type="email"
             className="edit-user-profile__input"
             defaultValue={email}
+            disabled={!inputsIsAvailable.email}
+            {...register("email")}
           />
           <img
             className="edit-user-profile__edit-icon"
             src="../images/edit.svg"
             alt="edit icon"
+            onClick={() => editInfo("email")}
           />
         </div>
-        <div className="edit-user-profile__input-container">
+        {loginMethod === "GOOGLE" && (
+          <p className="edit-user-profile__warning">
+            when your login method is with google you cannot edit your email
+            address
+          </p>
+        )}
+        <div
+          className={`edit-user-profile__input-container ${
+            inputsIsAvailable.phone
+              ? ""
+              : "edit-user-profile__input-container--disabled"
+          }`}
+        >
           <input
             type="number"
             className="edit-user-profile__input"
             defaultValue={phone ? phone : ""}
             placeholder="Please enter a number"
+            disabled={!inputsIsAvailable.phone}
+            {...register("phone")}
           />
           <img
             className="edit-user-profile__edit-icon"
             src="../images/edit.svg"
             alt="edit icon"
+            onClick={() => editInfo("phone")}
           />
         </div>
-        <div className="edit-user-profile__input-container">
+        <div
+          className={`edit-user-profile__input-container ${
+            inputsIsAvailable.birthday
+              ? ""
+              : "edit-user-profile__input-container--disabled"
+          }`}
+        >
           <input
             type="date"
             className="edit-user-profile__input"
-            defaultValue={birthday ? birthday : ""}
+            defaultValue={birthday ? getTime(birthday) : ""}
             placeholder="Please enter your birth date"
+            disabled={!inputsIsAvailable.birthday}
+            {...register("birthday")}
           />
           <img
             className="edit-user-profile__edit-icon"
             src="../images/edit.svg"
             alt="edit icon"
+            onClick={() => editInfo("birthday")}
           />
         </div>
-        <div className="edit-user-profile__input-container">
+        <div
+          className={`edit-user-profile__input-container ${
+            inputsIsAvailable.address
+              ? ""
+              : "edit-user-profile__input-container--disabled"
+          }`}
+        >
           <input
             type="text"
             className="edit-user-profile__input"
             defaultValue={address ? address : ""}
             placeholder="Please enter your address"
+            disabled={!inputsIsAvailable.address}
+            {...register("address")}
           />
           <img
             className="edit-user-profile__edit-icon"
             src="../images/edit.svg"
             alt="edit icon"
+            onClick={() => editInfo("address")}
           />
         </div>
         <button type="submit" className="edit-user-profile__btn-save">
           Save
         </button>
       </form>
+      {error && (
+        <p className="edit-user-profile__error">
+          Oops! Something went wrong. Please try again
+        </p>
+      )}
     </main>
   );
 };

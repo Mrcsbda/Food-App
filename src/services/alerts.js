@@ -8,6 +8,9 @@ export const setAlerts = (message) => {
     case "register":
       Swal.fire("Excellent!", "Successful registration!", "success");
       break;
+    case "edit":
+      Swal.fire("Excelent!", "Information updated successfully!", "success");
+      break;
     default:
       return "alert-info";
   }
