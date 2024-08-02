@@ -1,7 +1,7 @@
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { firebaseDB } from "../../firebase/firebaseConfig";
-import { getAuth, updateEmail } from "firebase/auth";
-import { getFromLocalStorage, saveToLocaStorage } from "../storage";
+import { getAuth, sendEmailVerification, updateEmail } from "firebase/auth";
+import { updateInfoUserFromStorage } from "../storage";
 
 export const getUserById = async (id) => {
   const userRef = doc(firebaseDB, `users`, id);
@@ -17,19 +17,17 @@ export const addNewUser = async (id, userInfo) => {
 export const editInfoUser = async ({ formData, id }) => {
   try {
     const userRef = doc(firebaseDB, `users`, id);
-    const resp = await updateDoc(userRef, formData);
     if (formData?.email) {
       const auth = getAuth();
       const user = auth.currentUser;
       const newEmail = formData.email;
       await updateEmail(user, newEmail);
     }
-    const infoUserFromStorage = getFromLocalStorage("user");
-    const newUser = { ...infoUserFromStorage, ...formData };
-    saveToLocaStorage("user", newUser);
+    const resp = await updateDoc(userRef, formData);
+    updateInfoUserFromStorage(formData);
     return true;
   } catch (error) {
     console.log(error);
-    return error;
+    return false;
   }
 };

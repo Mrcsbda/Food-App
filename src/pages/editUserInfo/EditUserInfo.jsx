@@ -7,12 +7,8 @@ import { editInfoUser } from "../../services/firebase/users";
 import { updateInfoUser } from "../../store/slides/user/user";
 import { setAlerts } from "../../services/alerts";
 import Loader from "../../components/loader/Loader";
+import EditImageForm from "../../components/editInfoUser/editImageForm/EditImageForm";
 const EditUserInfo = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const { name, avatar, email, loginMethod, phone, address, birthday, id } =
-    useSelector((state) => state.user);
-  const { register, handleSubmit } = useForm();
-  const distpatch = useDispatch();
   const initialState = {
     name: false,
     email: false,
@@ -20,10 +16,28 @@ const EditUserInfo = () => {
     birthday: false,
     address: false,
   };
-  const [inputsIsAvailable, setInputsIsAvailable] = useState(initialState);
+  const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [inputsIsAvailable, setInputsIsAvailable] = useState(initialState);
+  const { name, avatar, email, loginMethod, phone, address, birthday, id } =
+    useSelector((state) => state.user);
+  const { register, handleSubmit } = useForm();
+  const distpatch = useDispatch();
+  const propsToEditImageForm = {
+    setIsEditing,
+    setLoading,
+    id,
+    setError,
+  };
+  const getTime = (userBirthday) => {
+    const date = new Date(userBirthday);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate() + 1).padStart(2, "0");
 
+    return `${year}-${month}-${day}`;
+  };
   const editInfo = (type) => {
     if (type === "email" && loginMethod === "GOOGLE") {
       return;
@@ -45,6 +59,7 @@ const EditUserInfo = () => {
     !formData.phone && delete formData.phone;
     !formData.birthday && delete formData.birthday;
     !formData.address && delete formData.address;
+
     if (Object.keys(formData).length) {
       setLoading(true);
       const resp = await editInfoUser({ formData, id });
@@ -55,25 +70,15 @@ const EditUserInfo = () => {
         setAlerts("edit");
         setInputsIsAvailable(initialState);
       } else {
+        setInputsIsAvailable(initialState);
         setError(true);
       }
     }
   };
 
-  const getTime = (userBirthday) => {
-    const date = new Date(userBirthday);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate() + 1).padStart(2, "0");
-
-    return `${year}-${month}-${day}`;
-  };
-
   return (
     <main className="edit-user-profile">
-      {
-        loading && (<Loader/>)
-      }
+      {loading && <Loader />}
       <img
         className="edit-user-profile__arrow-prev"
         src="..//images/arrow-prev.svg"
@@ -95,12 +100,7 @@ const EditUserInfo = () => {
         />
       </figure>
       {isEditing && (
-        <form className="edit-user-profile__form-update-image">
-          <input type="file" className="edit-user-profile__input-file" />
-          <button type="submit" className="edit-user-profile__update-image-btn">
-            Update image
-          </button>
-        </form>
+        <EditImageForm propsToEditImageForm={propsToEditImageForm} />
       )}
       <form
         className="edit-user-profile__form-update-info"
@@ -147,13 +147,12 @@ const EditUserInfo = () => {
             alt="edit icon"
             onClick={() => editInfo("email")}
           />
+          {loginMethod === "GOOGLE" && (
+            <p className="edit-user-profile__warning">
+              when your login method is with google you cannot edit your email
+            </p>
+          )}
         </div>
-        {loginMethod === "GOOGLE" && (
-          <p className="edit-user-profile__warning">
-            when your login method is with google you cannot edit your email
-            address
-          </p>
-        )}
         <div
           className={`edit-user-profile__input-container ${
             inputsIsAvailable.phone

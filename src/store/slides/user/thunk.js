@@ -11,6 +11,7 @@ export const signUpWithEmailAndPassword = (data) => {
   return async (dispatch) => {
     try {
       const resp = await registerUserWithEmailPassword(data);
+
       if (resp.ok) {
         const user = {
           createdAt: new Date().getTime(),

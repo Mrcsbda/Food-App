@@ -88,6 +88,7 @@
 
     &__input-container {
         display: flex;
+        position: relative;
         align-items: center;
         justify-content: space-between;
         gap: 0.5rem;
@@ -120,7 +121,10 @@
         color: $gray-color;
         text-align: center;
         position: absolute;
-        top: 307px;
+        top: 47px;
+        width: 100%;
+        left: 0;
+        text-align: center;
     }
 
     &__btn-save {
@@ -158,8 +162,8 @@
         }
 
         &__warning {
-            top: 283px;
-            font-size: 12px;
+            top: 45px;
+            font-size: 13px;
         }
     }
 }
@@ -189,7 +193,7 @@
         }
 
         &__warning {
-            top: 287px;
+            top: 47px;
         }
 
         &__btn-save {

@@ -7,6 +7,8 @@ import titleCase from "../../services/titleCase";
 import Loader from "../../components/loader/Loader";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { setAlerts } from "../../services/alerts";
+import { sendEmailVerification } from "firebase/auth";
 const SignUp = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState(false);
@@ -56,6 +58,7 @@ const SignUp = () => {
       switch (resp) {
         case "ok":
           reset();
+          setAlerts("register");
           navigate("/");
           break;
         case "Firebase: Error (auth/email-already-in-use).":

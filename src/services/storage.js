@@ -2,6 +2,8 @@ export const saveToLocaStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
-export const getFromLocalStorage = (key) => {
-  return JSON.parse(localStorage.getItem(key));
+export const updateInfoUserFromStorage = (data) => {
+  const infoUserFromStorage = JSON.parse(localStorage.getItem("user"));
+  const newUser = { ...infoUserFromStorage, ...data };
+  saveToLocaStorage("user", newUser);
 };

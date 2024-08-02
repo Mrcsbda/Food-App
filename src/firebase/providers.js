@@ -1,6 +1,7 @@
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
@@ -57,7 +58,7 @@ export const signInWithGoogle = async () => {
       avatar: photoURL,
       id: uid,
     };
-    return {ok: true, ...infoUser};
+    return { ok: true, ...infoUser };
   } catch (error) {
     return { ok: false, errorMessage: error.message };
   }

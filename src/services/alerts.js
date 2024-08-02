@@ -6,7 +6,7 @@ export const setAlerts = (message) => {
       Swal.fire("Excellent!", "You have successfully logged in!", "success");
       break;
     case "register":
-      Swal.fire("Excellent!", "Successful registration!", "success");
+      Swal.fire("Excellent!", "Successful registration! We have sent you an email to verify your account.", "success");
       break;
     case "edit":
       Swal.fire("Excelent!", "Information updated successfully!", "success");
